@@ -1,0 +1,27 @@
+{
+  "name": "j-stillery",
+  "description": "A Javascript / Typescript implementation of the pipes and filters (a.k.a. pipeline) pattern",
+  "version": "0.0.1",
+  "author": "Sandhjé Bouw",
+  "license": "MIT",
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.37",
+    "@types/node": "^6.0.52",
+    "@types/sinon": "^1.16.35",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "mocha-typescript": "^1.0.15",
+    "sinon": "^1.17.7",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.4"
+  },
+  "scripts": {
+    "test": "mocha --opts mocha.opts",
+    "compile": "tsc -p .",
+    "watch": "tsc --watch -p ."
+  }
+}
