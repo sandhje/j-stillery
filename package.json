@@ -17,6 +17,7 @@
     "mocha-typescript": "^1.0.15",
     "sinon": "^1.17.7",
     "ts-node": "^2.0.0",
+    "tslint": "^4.5.1",
     "typescript": "^2.1.4"
   },
   "scripts": {
