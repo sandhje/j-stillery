@@ -19,4 +19,4 @@ interface IRunnable<T>
     run: (input: T) => Promise<T>;
 }
 
-export default IRunnable;
+export { IRunnable };

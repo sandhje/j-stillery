@@ -1,7 +1,4 @@
-import IPipeline from "./IPipeline";
-import Pipeline from "./Pipeline";
-import IStage from "./IStage";
-import IPipeable from "./IPipeable";
+import { IPipeable, IPipeline, IStage, Pipeline } from ".";
 
 abstract class AbstractFilter<T> implements IStage<T>, IPipeable<T>
 {
@@ -69,4 +66,4 @@ class FilterPipeline<T> extends Pipeline<T>
     }
 }
 
-export default AbstractFilter;
+export { AbstractFilter };

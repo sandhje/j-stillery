@@ -1,5 +1,4 @@
-import IStage from "./IStage";
-import IPipeable from "./IPipeable";
+import { IPipeable, IStage } from ".";
 
 abstract class AbstractParallel<T> implements IStage<T>, IPipeable<T>
 {
@@ -102,4 +101,4 @@ class ParallelStage<T>
     // stage.invoke(input, stageNext, resolveStage, rejectStage); // Call stage with empty next
 }
 
-export default AbstractParallel;
+export { AbstractParallel };

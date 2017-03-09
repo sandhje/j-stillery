@@ -1,4 +1,4 @@
-import IStage from "./IStage";
+import { IStage } from ".";
 
 abstract class AbstractTask<T> implements IStage<T>
 {
@@ -26,4 +26,4 @@ abstract class AbstractTask<T> implements IStage<T>
     public abstract down(output: T, resolve: (output?: T | PromiseLike<T>) => void, reject: (reason: any) => void): void
 }
 
-export default AbstractTask;
+export { AbstractTask };

@@ -1,5 +1,4 @@
-import IPipeline from "./IPipeline";
-import IStage from "./IStage";
+import { IPipeline, IStage } from ".";
 
 class Pipeline<T> implements IPipeline<T>
 {
@@ -79,4 +78,4 @@ class Pipeline<T> implements IPipeline<T>
     }
 }
 
-export default Pipeline;
+export { Pipeline };

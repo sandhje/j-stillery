@@ -1,6 +1,4 @@
-import IStage from "./IStage";
-import IRunnable from "./IRunnable";
-import IPipeable from "./IPipeable";
+import { IPipeable, IRunnable, IStage } from ".";
 
 /**
  * Generic pipeline interface
@@ -13,4 +11,4 @@ import IPipeable from "./IPipeable";
  */
 interface IPipeline<T> extends IRunnable<T>, IPipeable<T> { }
 
-export default IPipeline;
+export { IPipeline };

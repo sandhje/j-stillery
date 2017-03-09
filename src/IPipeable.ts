@@ -1,4 +1,4 @@
-import IStage from "./IStage";
+import { IStage } from ".";
 
 /**
  * Generic pipeable interface
@@ -21,4 +21,4 @@ interface IPipeable<T>
     pipe: (stage: IStage<T>) => IPipeable<T>;
 }
 
-export default IPipeable;
+export { IPipeable };
