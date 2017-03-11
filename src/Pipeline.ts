@@ -6,23 +6,11 @@ class Pipeline<T> implements IPipeline<T>
 
     private stages: Array<IStage<T>> = [];
 
-    protected incrementCurrent(): void
-    {
-        this.current++;
-    }
-
-    public getCurrent(): number
-    {
+    public getCurrent(): number {
         return this.current;
     }
 
-    protected pushStage(stage: IStage<T>): void
-    {
-        this.stages.push(stage);
-    }
-
-    public getCurrentStage(): IStage<T>
-    {
+    public getCurrentStage(): IStage<T> {
         if (this.current in this.stages) {
             return this.stages[this.current];
         }
@@ -30,23 +18,28 @@ class Pipeline<T> implements IPipeline<T>
         return null;
     }
 
-    public getStages(): Array<IStage<T>>
-    {
-       return this.stages; 
+    public getStages(): Array<IStage<T>> {
+       return this.stages;
     }
 
-    public pipe(stage: IStage<T>): IPipeline<T>
-    {
+    public pipe(stage: IStage<T>): IPipeline<T> {
         this.pushStage(stage);
 
         return this;
     }
 
-    public run(input: T): Promise<T>
-    {
+    public run(input: T): Promise<T> {
         this.reset();
 
         return this.next(input);
+    }
+
+    protected incrementCurrent(): void {
+        this.current++;
+    }
+
+    protected pushStage(stage: IStage<T>): void {
+        this.stages.push(stage);
     }
 
     protected reset(): void
@@ -60,7 +53,7 @@ class Pipeline<T> implements IPipeline<T>
 
             let currentStage = this.getCurrentStage();
             if (currentStage !== null) {
-                // Go to next in filter chain                
+                // Go to next in filter chain
                 currentStage.invoke(input, this.next.bind(this), resolve, reject);
                 return;
             }
