@@ -49,11 +49,14 @@ class Task<T> implements IStage<T>
         if (this.isExecuteCallback(executable)) {
             return executable(input, resolve, reject);
         }
+
+        resolve(input); // Resolve with input if no execute strategy or callback passed
     }
 
     private isExecuteStrategy(executable: any): executable is IExecuteStrategy<T> {
         return (
-            typeof executable === "object"
+            executable !== null
+            && typeof executable === "object"
             && typeof executable.execute === "function"
         );
     }

@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { only, skip, slow, suite, test, timeout } from "mocha-typescript";
+import * as sinon from "sinon";
 import { Pipeline, Task } from "../src";
 
 @suite("Pipeline tests")
@@ -25,12 +26,26 @@ class PipelineTest {
     }
 
     @test("Should run the stages in the pipeline")
-    public assertRun() {
+    public assertRun(done) {
         // Arrange
-        // Set spies on up and down in tasks
+        let input = "test";
+        let nullTask1 = new Task<string>();
+        let nullTask2 = new Task<string>();
+        let invoke1 = sinon.spy(nullTask1, "invoke");
+        let invoke2 = sinon.spy(nullTask2, "invoke");
+
+        let pipeline = (new Pipeline<string>()).pipe(nullTask1).pipe(nullTask2);
 
         // Act
-
-        // Assert
+        pipeline.run(input).then(() => {
+            // Assert
+            // Assert all spies are called exactly once
+            expect(invoke1.calledOnce).to.be.true;
+            expect(invoke2.calledOnce).to.be.true;
+            expect(invoke1.calledBefore(invoke2)).to.be.true;
+            expect(invoke1.calledWith(input)).to.be.true;
+            expect(invoke2.calledWith(input)).to.be.true;
+            done();
+        });
     }
 }
