@@ -5,7 +5,7 @@
 		"moduleResolution": "node",
 		"sourceMap": true,
 		"lib": [ "es2016" ],
-        "outDir": "./dist/src",
+        "outDir": "./dist",
 		"experimentalDecorators": true
 	},
 	"exclude": [
