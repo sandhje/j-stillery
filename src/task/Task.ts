@@ -1,7 +1,6 @@
-import { IExecuteCallback, IExecuteStrategy, IStage } from ".";
+import { IExecuteCallback, IExecuteStrategy, IStage } from "../";
 
-class Task<T> implements IStage<T>
-{
+class Task<T> implements IStage<T> {
     constructor(
         private up: IExecuteStrategy<T> | IExecuteCallback<T> = null,
         private down: IExecuteStrategy<T> | IExecuteCallback<T> = null,
@@ -9,7 +8,7 @@ class Task<T> implements IStage<T>
 
     public invoke(
         input: T,
-        next: (T) => Promise<T>,
+        next: (input: T) => Promise<T>,
         resolve: (output?: T | PromiseLike<T>) => void,
         reject: (reason: any) => void
     ): void {
