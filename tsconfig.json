@@ -6,7 +6,13 @@
 		"sourceMap": true,
 		"lib": [ "es2016" ],
         "outDir": "./dist",
-		"experimentalDecorators": true
+		"experimentalDecorators": true,
+		"typeRoots": [
+			"node_modules/@types"
+		],
+		"types": [
+			"node"
+		]
 	},
 	"exclude": [
 		"node_modules"
