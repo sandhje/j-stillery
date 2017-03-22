@@ -1,7 +1,7 @@
 import { IMatchCallback, IMatchStrategy, IPipeable, IPipeline, IStage, Pipeline } from "../";
 import { FilterPipeline } from "./FilterPipeline";
 
-abstract class Filter<T> implements IStage<T>, IPipeable<T> {
+class Filter<T> implements IStage<T>, IPipeable<T> {
     private _filterPipeline: FilterPipeline<T> = null;
     protected get filterPipeline(): FilterPipeline<T>
     {
