@@ -66,7 +66,7 @@ class Parallel<T> implements IStage<T>, IPipeable<T> {
         return (
             mergeable !== null
             && typeof mergeable === "object"
-            && typeof mergeable.execute === "function"
+            && typeof mergeable.merge === "function"
         );
     }
 
