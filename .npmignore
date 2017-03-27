@@ -1,0 +1,12 @@
+node_modules/
+*.log
+*.tgz
+
+src/
+tests/
+.editorconfig
+.gitignore
+mocha.opts
+tsconfig.json
+tslint.json
+dist/tests

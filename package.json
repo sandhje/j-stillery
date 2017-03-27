@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "author": "Sandhjé Bouw",
   "license": "MIT",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index",
   "engines": {
     "node": "*"
   },
