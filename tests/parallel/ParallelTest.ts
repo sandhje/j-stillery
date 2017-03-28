@@ -38,11 +38,12 @@ class ParallelTest {
             return input + results[0] + results[1];
         };
 
-        let parallel = new Parallel<string>(mergeUpStrategy, mergeDownStrategy);
-        parallel.pipe(parallelStage1).pipe(parallelStage2);
-
-        let pipeline = new Pipeline<string>();
-        pipeline.pipe(parallel).pipe(regularStage);
+        let pipeline = (new Pipeline<string>())
+            .pipe((new Parallel<string>(mergeUpStrategy, mergeDownStrategy))
+                .pipe(parallelStage1)
+                .pipe(parallelStage2)
+            )
+            .pipe(regularStage);
 
         // Act
         pipeline.run("input").then((output) => {
@@ -83,11 +84,12 @@ class ParallelTest {
             return input + results[0] + results[1];
         };
 
-        let parallel = new Parallel<string>(mergeUpCallback, mergeDownCallback);
-        parallel.pipe(parallelStage1).pipe(parallelStage2);
-
-        let pipeline = new Pipeline<string>();
-        pipeline.pipe(parallel).pipe(regularStage);
+        let pipeline = (new Pipeline<string>())
+            .pipe((new Parallel<string>(mergeUpCallback, mergeDownCallback))
+                .pipe(parallelStage1)
+                .pipe(parallelStage2)
+            )
+            .pipe(regularStage);
 
         // Act
         pipeline.run("input").then((output) => {
@@ -124,11 +126,12 @@ class ParallelTest {
             return input + results[0] + results[1];
         };
 
-        let parallel = new Parallel<string>(null, mergeDownCallback);
-        parallel.pipe(parallelStage1).pipe(parallelStage2);
-
-        let pipeline = new Pipeline<string>();
-        pipeline.pipe(parallel).pipe(regularStage);
+        let pipeline = (new Pipeline<string>())
+            .pipe((new Parallel<string>(null, mergeDownCallback))
+                .pipe(parallelStage1)
+                .pipe(parallelStage2)
+            )
+            .pipe(regularStage);
 
         // Act
         pipeline.run("input").then((output) => {

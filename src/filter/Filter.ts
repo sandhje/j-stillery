@@ -16,7 +16,7 @@ class Filter<T> implements IStage<T>, IPipeable<T> {
         private match: IMatchStrategy<T> | IMatchCallback<T> = null,
     ) {}
 
-    public pipe(stage: IStage<T>): IPipeable<T>
+    public pipe(stage: IStage<T>): Filter<T>
     {
         this.filterPipeline.pipe(stage);
 

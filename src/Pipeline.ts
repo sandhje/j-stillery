@@ -22,7 +22,7 @@ class Pipeline<T> implements IPipeline<T>
        return this.stages;
     }
 
-    public pipe(stage: IStage<T>): IPipeline<T> {
+    public pipe(stage: IStage<T>): Pipeline<T> {
         this.pushStage(stage);
 
         return this;

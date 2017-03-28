@@ -24,14 +24,14 @@ class FilterTest {
         let matchStrategy = <IMatchStrategy<string>> {};
         matchStrategy.match = (input) => { return true; };
 
-        let filterStrategy = new Filter<string>(matchStrategy);
-        filterStrategy.pipe(filterStage);
-
-        let pipelineStrategy = new Pipeline<string>();
-        pipelineStrategy.pipe(filterStrategy).pipe(regularStage);
+        let pipeline = (new Pipeline<string>())
+            .pipe((new Filter<string>(matchStrategy))
+                .pipe(filterStage)
+            )
+            .pipe(regularStage);
 
         // Act
-        pipelineStrategy.run("input").then((output) => {
+        pipeline.run("input").then((output) => {
             // Assert
             expect(output).to.equal("input-filterStageUp-regularStage-filterStageDown");
             done();
@@ -56,14 +56,14 @@ class FilterTest {
 
         let matchCallback: IMatchCallback<string> = (input) => { return true; };
 
-        let filterCallback = new Filter<string>(matchCallback);
-        filterCallback.pipe(filterStage);
-
-        let pipelineCallback = new Pipeline<string>();
-        pipelineCallback.pipe(filterCallback).pipe(regularStage);
+        let pipeline = (new Pipeline<string>())
+            .pipe((new Filter<string>(matchCallback))
+                .pipe(filterStage)
+            )
+            .pipe(regularStage);
 
         // Act
-        pipelineCallback.run("input").then((output) => {
+        pipeline.run("input").then((output) => {
             // Assert
             expect(output).to.equal("input-filterStageUp-regularStage-filterStageDown");
             done();
@@ -89,14 +89,14 @@ class FilterTest {
         let matchStrategy = <IMatchStrategy<string>> {};
         matchStrategy.match = (input) => { return false; };
 
-        let filterStrategy = new Filter<string>(matchStrategy);
-        filterStrategy.pipe(filterStage);
-
-        let pipelineStrategy = new Pipeline<string>();
-        pipelineStrategy.pipe(filterStrategy).pipe(regularStage);
+        let pipeline = (new Pipeline<string>())
+            .pipe((new Filter<string>(matchStrategy))
+                .pipe(filterStage)
+            )
+            .pipe(regularStage);
 
         // Act
-        pipelineStrategy.run("input").then((output) => {
+        pipeline.run("input").then((output) => {
             // Assert
             expect(output).to.equal("input-regularStage");
             done();
@@ -121,14 +121,13 @@ class FilterTest {
 
         let matchCallback: IMatchCallback<string> = (input) => { return false; };
 
-        let filterCallback = new Filter<string>(matchCallback);
-        filterCallback.pipe(filterStage);
-
-        let pipelineCallback = new Pipeline<string>();
-        pipelineCallback.pipe(filterCallback).pipe(regularStage);
+        let pipeline = (new Pipeline<string>())
+            .pipe((new Filter<string>(matchCallback))
+                .pipe(filterStage)
+            ).pipe(regularStage);
 
         // Act
-        pipelineCallback.run("input").then((output) => {
+        pipeline.run("input").then((output) => {
             // Assert
             expect(output).to.equal("input-regularStage");
             done();

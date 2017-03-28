@@ -11,10 +11,12 @@ class PipelineTest {
         let nullTask1 = new Task<null>();
         let nullTask2 = new Task<null>();
         let nullTask3 = new Task<null>();
-        let pipeline = new Pipeline<null>();
 
         // Act
-        pipeline.pipe(nullTask1).pipe(nullTask2).pipe(nullTask3);
+        let pipeline = (new Pipeline<null>())
+            .pipe(nullTask1)
+            .pipe(nullTask2)
+            .pipe(nullTask3);
 
         // Assert
         // Assert that no. of stages matches configuration
@@ -34,7 +36,9 @@ class PipelineTest {
         let invoke1 = sinon.spy(nullTask1, "invoke");
         let invoke2 = sinon.spy(nullTask2, "invoke");
 
-        let pipeline = (new Pipeline<string>()).pipe(nullTask1).pipe(nullTask2);
+        let pipeline = (new Pipeline<string>())
+            .pipe(nullTask1)
+            .pipe(nullTask2);
 
         // Act
         pipeline.run(input).then(() => {
