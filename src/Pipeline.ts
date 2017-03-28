@@ -11,6 +11,7 @@ import { IPipeline, IStage } from ".";
  * therefore modify output before and after the "next" call.
  *
  * @module j-stillery/Pipeline
+ * @author Sandhjé Bouw (sandhje@ecodes.io)
  */
 class Pipeline<T> implements IPipeline<T> {
     /**

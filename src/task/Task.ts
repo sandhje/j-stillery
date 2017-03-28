@@ -1,6 +1,20 @@
 import { IExecuteCallback, IExecuteStrategy, IStage } from "../";
 
+/**
+ * Generic "task" stage
+ *
+ * The task stage is a stage that can be configured with execute strategies or callbacks. These strategies will be
+ * called on the appropriate times in the IStage::invoke method, eliminating the need for the consumer to write their
+ * own implementation of this interface while retaining all flexibility.
+ *
+ * The up and down strategies (or callbacks) are called before (up) and after (down) the next stage in the pipeline is
+ * invoked.
+ *
+ * @package j-stillery/Task
+ * @author Sandhjé Bouw (sandhje@ecodes.io)
+ */
 class Task<T> implements IStage<T> {
+
     constructor(
         private up: IExecuteStrategy<T> | IExecuteCallback<T> = null,
         private down: IExecuteStrategy<T> | IExecuteCallback<T> = null,
@@ -35,7 +49,7 @@ class Task<T> implements IStage<T> {
         });
     }
 
-    private execute(
+    protected execute(
         executable: IExecuteStrategy<T> | IExecuteCallback<T>,
         input: T,
         resolve: (output?: T | PromiseLike<T>) => void,

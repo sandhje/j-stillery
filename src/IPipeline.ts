@@ -3,9 +3,8 @@ import { IStage } from ".";
 /**
  * Generic pipeline interface
  *
- * Implementors of the pipeline interface need to be both pipeable and runnable
- *
- * @author Sandhjé
+ * @package j-stillery/IPipeline
+ * @author Sandhjé Bouw (sandhje@ecodes.io)
  */
 interface IPipeline<T> {
     /**
