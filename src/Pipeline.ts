@@ -42,8 +42,7 @@ class Pipeline<T> implements IPipeline<T>
         this.stages.push(stage);
     }
 
-    protected reset(): void
-    {
+    protected reset(): void {
         this.current = -1;
     }
 
@@ -65,8 +64,7 @@ class Pipeline<T> implements IPipeline<T>
         return new Promise<T>(promiseCallback.bind(this));
     }
 
-    protected end(input: T, resolve: (value?: T | PromiseLike<T>) => void, reject: (reason: any) => void): void
-    {
+    protected end(input: T, resolve: (value?: T | PromiseLike<T>) => void, reject: (reason: any) => void): void {
         resolve(input);
     }
 }
