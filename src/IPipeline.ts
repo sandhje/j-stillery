@@ -11,8 +11,8 @@ interface IPipeline<T> {
     /**
      * Pipe a stage onto the subject
      *
-     * Configure the subject with stages, usually so the can be run
-     * Return self to achieve a more fluent API
+     * Configure the subject with stages which will be invoked when the subject's run method is called. Return self to
+     * achieve a more fluent API.
      *
      * @param IStage<T> stage
      * @returns IPipeline<T>
@@ -22,8 +22,7 @@ interface IPipeline<T> {
     /**
      * Run the subject
      *
-     * Return a Promise which resolves with the output resulting
-     * from the subject being run with a given input
+     * Return a Promise which resolves with the output resulting from the subject being run with a given input
      *
      * @param T input
      * @returns Promise<T>
