@@ -9,17 +9,9 @@
  * @param function reject
  * @returns void
  *
- * @package j-stillery/Task
+ * @package j-stillery/IExecuteCallback
  * @author Sandhjé Bouw (sandhje@ecodes.io)
  */
-/**
-     * Execute the strategy
-     *
-     *
-     * @param T input
-     * @param function resolve
-     * @param function reject
-     */
 interface IExecuteCallback<T> {
     (
         input: T,

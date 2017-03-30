@@ -14,12 +14,24 @@ import { IExecuteCallback, IExecuteStrategy, IStage } from "../";
  * @author Sandhjé Bouw (sandhje@ecodes.io)
  */
 class Task<T> implements IStage<T> {
-
+    /**
+     * Task constructor
+     *
+     * The passed execute strategies or callbacks will be executed before (up) and after (down) the next stage in the
+     * pipeline is invoked, giving the consumer two moments to modify the input. If the "up" or "down" parameters are
+     * not supplied the task will resolve the up or down action immediatly with it's input.
+     *
+     * @param IExecuteStrategy<T>|IExecuteCallback<T> up
+     * @param IExecuteStrategy<T>|IExecuteCallback<T> down
+     */
     constructor(
         private up: IExecuteStrategy<T> | IExecuteCallback<T> = null,
         private down: IExecuteStrategy<T> | IExecuteCallback<T> = null,
     ) {}
 
+    /**
+     * @see IStage::invoke
+     */
     public invoke(
         input: T,
         next: (input: T) => Promise<T>,
@@ -49,6 +61,18 @@ class Task<T> implements IStage<T> {
         });
     }
 
+    /**
+     * Run the passed executable
+     *
+     * If the passed executable is neither a IExecuteStrategy not a IExecuteCallback this method will call the resolve
+     * argument with unmodified input.
+     *
+     * @param IExecuteStrategy<T>|IExecuteCallback<T> executable
+     * @param T input
+     * @param function resolve
+     * @param function reject
+     * @returns void
+     */
     protected execute(
         executable: IExecuteStrategy<T> | IExecuteCallback<T>,
         input: T,
@@ -66,6 +90,14 @@ class Task<T> implements IStage<T> {
         resolve(input); // Resolve with input if no execute strategy or callback passed
     }
 
+    /**
+     * Executable strategy type guard
+     *
+     * Check wether the executable adheres to the interface of an IExecutableStrategy.
+     *
+     * @param any executable
+     * @returns bool
+     */
     private isExecuteStrategy(executable: any): executable is IExecuteStrategy<T> {
         return (
             executable !== null
@@ -74,6 +106,14 @@ class Task<T> implements IStage<T> {
         );
     }
 
+    /**
+     * Executable callback type guard
+     *
+     * Check wether the executable adheres to the interface of an IExecutableCallback.
+     *
+     * @param any executable
+     * @returns bool
+     */
     private isExecuteCallback(executable: any): executable is IExecuteCallback<T> {
         return typeof executable === "function";
     }

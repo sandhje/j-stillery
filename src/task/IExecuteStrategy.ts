@@ -1,7 +1,7 @@
 /**
  * Generic execute task strategy interface
  *
- * @package j-stillery/Task
+ * @package j-stillery/IExecuteStrategy
  * @author Sandhjé Bouw (sandhje@ecodes.io)
  */
 interface IExecuteStrategy<T> {

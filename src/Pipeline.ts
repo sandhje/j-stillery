@@ -112,10 +112,10 @@ class Pipeline<T> implements IPipeline<T> {
     /**
      * Call the next stage in the pipeline
      *
-     * On invoking a stage passes a reference to itself so the invoked stage has control over when to call the next
-     * stage in the pipeline.
+     * On invoking a stage pass this callback so the invoked stage has control over when to call the next
+     * stage in the pipeline. The callback returns a promise with the output value of the next stage.
      *
-     * @returns Promise<T> The output value of the stage
+     * @callback (input: T): Promise<T>
      */
     protected next = (input: T): Promise<T> => {
         let promiseCallback = (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason: any) => void) => {
