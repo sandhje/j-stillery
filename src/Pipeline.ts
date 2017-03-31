@@ -118,23 +118,19 @@ class Pipeline<T> implements IPipeline<T> {
      * @callback (input: T): Promise<T>
      */
     protected next = (input: T): Promise<T> => {
-        let promiseCallback = (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason: any) => void) => {
+        return new Promise<T>((resolve: (value?: T | PromiseLike<T>) => void, reject: (reason: any) => void) => {
             this.incrementCurrent();
 
             let currentStage = this.getCurrentStage();
             if (currentStage !== null) {
                 // Go to next in filter chain
-                // TODO: Get rid of "bind"
-                currentStage.invoke(input, this.next.bind(this), resolve, reject);
+                currentStage.invoke(input, this.next, resolve, reject);
                 return;
             }
 
             // End of Pipeline
             this.end(input, resolve, reject);
-        };
-
-        // TODO: Get rid of bind
-        return new Promise<T>(promiseCallback.bind(this));
+        });
     }
 
     /**
