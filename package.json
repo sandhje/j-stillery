@@ -1,5 +1,5 @@
 {
-  "name": "j-stillery",
+  "name": "@open-sourcerers/j-stillery",
   "description": "A Javascript / Typescript implementation of the pipes and filters (a.k.a. pipeline) pattern",
   "version": "0.0.1",
   "author": "Sandhjé Bouw",

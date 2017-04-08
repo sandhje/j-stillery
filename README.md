@@ -30,7 +30,7 @@ Below a basic example of setting up a pipeline with, in this case, two stages (t
 ### Typescript
 
 ```typescript
-import { Pipeline, Task } from "j-stillery";
+import { Pipeline, Task } from "@open-sourcerers/j-stillery";
 
 // Payload for pipeline
 // Can be anything, in this case an instance of the fictive class "Car"
@@ -70,7 +70,7 @@ pipeline.run(car).then((result: Car) => {
 ```
 ### Javascript
 ```javascript
-var JStillery = require("j-stillery");
+var JStillery = require("@open-sourcerers/j-stillery");
 
 // Payload for pipeline
 // Can be anything, in this case an instance of the fictive class "Car"
