@@ -1,5 +1,4 @@
-import { IMatchCallback, IMatchStrategy, IPipeable, IPipeline, IStage, Pipeline } from "../";
-import { FilterPipeline } from "./FilterPipeline";
+import { IMatchCallback, IMatchStrategy, IPipeable, IPipeline, IStage, Pipeline, SubPipeline } from "../";
 
 /**
  * Filter stage: run "sub-stages" conditionally
@@ -20,17 +19,17 @@ class Filter<T> implements IStage<T>, IPipeable<T> {
      *
      * @var FilterPipeline<T>
      */
-    private _filterPipeline: FilterPipeline<T> = null;
+    private _filterPipeline: SubPipeline<T> = null;
 
     /**
      * Filter pipeline getter
      *
      * @returns FilterPipeline<T>
      */
-    protected get filterPipeline(): FilterPipeline<T>
+    protected get filterPipeline(): SubPipeline<T>
     {
         if (this._filterPipeline === null) {
-            this._filterPipeline = new FilterPipeline<T>();
+            this._filterPipeline = new SubPipeline<T>();
         }
 
         return this._filterPipeline;
