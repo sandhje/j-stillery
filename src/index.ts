@@ -22,4 +22,5 @@ export * from "./IPipeable";
 export * from "./IPipeline";
 export * from "./IStage";
 export * from "./Pipeline";
+export * from "./SubPipeline";
 export * from "./task/Task";
