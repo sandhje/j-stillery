@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/sandhje/j-stillery.svg?branch=master)](https://travis-ci.org/sandhje/j-stillery)
+[![codecov](https://codecov.io/gh/sandhje/j-stillery/branch/master/graph/badge.svg)](https://codecov.io/gh/sandhje/j-stillery)
 
 # JStillery
 A Javascript / Typescript implementation of the pipeline (a.k.a. pipes and filters) pattern.
@@ -9,7 +10,7 @@ The basic idea of this pattern is much like the idea of an assembly line. For ex
 
 JStillery is a flexible bi-directional pipeline, giving each stage control over when the next stage in the pipeline should be called and therefore giving it two possibilities to perform its operations: before the next stage runs and after that stage completes. These two interaction points are called the "up" and "down" process of the stage, derived from the travelling direction of the payload through the pipeline.
 
-![JStillery pipeline flow](./docs/diagrams/rendered/basic-pipeline-ditaa.png)
+![JStillery pipeline flow](https://github.com/sandhje/j-stillery/raw/master/docs/diagrams/rendered/basic-pipeline-ditaa.png)
 
 ## Installation
 
@@ -144,7 +145,7 @@ A callable taking the three parameters of the IExecutableStrategy's "execute" me
 
 The Filter is a wrapper stage upon which "sub-stages" can be piped. The "sub-stages" will form a "sub-pipeline" within the "main" JStillery pipeline. This "sub-pipeline" will only be executed if the filter's conditions are met. These conditions are defined by passing an IMatchStrategy or IMatchCallback into the filter's constructor.
 
-![JStillery pipeline flow with filter](./docs/diagrams/rendered/filter-pipeline-ditaa.png)
+![JStillery pipeline flow with filter](https://github.com/sandhje/j-stillery/raw/master/docs/diagrams/rendered/filter-pipeline-ditaa.png)
 
 ### IMatchStrategy
 
@@ -164,7 +165,7 @@ The Parallel is, as the Filter, a wrapper stage upon which "sub-stages" can be p
 
 The merging logic for both the "up" and "down" processes can be passed using the two arguments of the Parallel's constructor. These arguments need to implement the IMergeStrategy or the IMergeCallback.
 
-![JStillery pipeline flow with parallel](./docs/diagrams/rendered/parallel-pipeline-ditaa.png)
+![JStillery pipeline flow with parallel](https://github.com/sandhje/j-stillery/raw/master/docs/diagrams/rendered/parallel-pipeline-ditaa.png)
 
 ### IMergeStrategy
 
