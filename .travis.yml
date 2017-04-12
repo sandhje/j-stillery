@@ -1,17 +1,21 @@
 language: node_js
-
 node_js:
-  - "7"
-  - "6"
-  - "5"
-  - "4"
-
+- '7'
+- '6'
+- '5'
+- '4'
 install:
-  - yarn install
-
+- yarn install
 script:
-  - npm test
-  - npm run report-coverage
-
+- npm test
+- npm run report-coverage
 after_success:
-  - cat ./coverage/coverage-final.json | ./node_modules/codecov.io/bin/codecov.io.js
+- cat ./coverage/coverage-final.json | ./node_modules/codecov.io/bin/codecov.io.js
+deploy:
+  provider: npm
+  email: sandhje@ecodes.io
+  api_key:
+    secure: AeOuGDmn/qiv7d2aDvrUa2vG9YcbYheNE5fT3VE5eK975q+05+zUnlvGR6fIVObLi1WpSo2Y3A04E1vAQ8FqJCHWhV3B5NuUzmBe+A6FZSImGG1gXYNbV8ToAZTUL9kJ22Q8Wdg/BspjlvOkbEswNDD6Qmsa+fQ2oxUwXvnufeHompuv4Z2z5p2C8kv+cPW67EY1GjCb0SB30wk7CUsj1hxyQCMPk4DwA7xASq9HaiJG2BRvl3c/rKnanzqwYIv9jz0+AK/f49QTIWhO8+GRol+uGRarnjGhG8Ha+yANbNhenhLs3L/kyE6Qo1fGlKyPPrJBY3C5iL9r0rJc4gesVZty8PNj+iqvfIvrgjODv0TU02uewkKJAvN9RoslrIK/ro7w5swfCKUKa6+qFj/N2kc3rAmWEH87Hch6vCOu8RzZ8l7OTmjuQJoAqXaRdaHfj2S0P+/5V5aN851GJQTx8sjBtFuyOFtdXbBpt8kA6jCwMBSxV/N4R9naS33zZNDtrzLzsJS9bwCRMozFBclan6uZrb7rV5NoLsZpcfuxnITe8BbXuy0ktZplx7c34MhR2srotVYHhpPizQ0fzXdq+3qemBfdYIpRLuVOIXOK6fSCbWwsuJyGPjohyGCYNL23ydrZ6eDiW8Nhyy4wTpDcA52MnVqQ0dbt5+kSLm9yw98=
+  on:
+    tags: true
+    repo: sandhje/j-stillery
