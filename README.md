@@ -18,6 +18,11 @@ Install with npm:
 ```
 npm install open-sourcerers/j-stillery
 ```
+Or with yarn:
+
+```
+yarn add open-sourcerers/j-stillery
+```
 
 ## Requirements
 
