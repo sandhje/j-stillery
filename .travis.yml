@@ -5,3 +5,13 @@ node_js:
   - "6"
   - "5"
   - "4"
+
+install:
+  - yarn install
+
+script:
+  - npm test
+  - npm run report-coverage
+
+after_success:
+  - cat ./coverage/coverage-final.json | ./node_modules/codecov.io/bin/codecov.io.js

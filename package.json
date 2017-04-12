@@ -15,16 +15,37 @@
     "@types/node": "^7.0.8",
     "@types/sinon": "^1.16.35",
     "chai": "^3.5.0",
+    "codecov.io": "^0.1.6",
     "mocha": "^3.2.0",
     "mocha-typescript": "^1.0.15",
+    "nyc": "^10.2.0",
     "sinon": "^1.17.7",
+    "source-map-support": "^0.4.14",
     "ts-node": "^2.0.0",
     "tslint": "^4.5.1",
     "typescript": "^2.1.4"
   },
   "scripts": {
-    "test": "mocha --opts mocha.opts",
+    "test": "nyc mocha --opts mocha.opts",
+    "report-coverage": "nyc report --reporter=json",
     "compile": "tsc -p .",
     "watch": "tsc --watch -p ."
+  },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }
