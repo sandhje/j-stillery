@@ -9,6 +9,7 @@ install:
 script:
 - npm test
 - npm run report-coverage
+- npm run compile
 after_success:
 - cat ./coverage/coverage-final.json | ./node_modules/codecov.io/bin/codecov.io.js
 deploy:
